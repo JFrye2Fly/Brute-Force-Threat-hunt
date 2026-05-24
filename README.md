@@ -6,7 +6,7 @@
 l rules.
 
 <br><hr><br>
-## Step 1 — Search for faile logins
+## Step 1 — Search for failed logins
 
 Query used: 
 DeviceLogonEvents
