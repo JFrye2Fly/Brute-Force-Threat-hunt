@@ -8,7 +8,8 @@ l rules.
 <br><hr><br>
 ## Step 1 — Search for failed logins
 
-Query used: 
+***Query used:*** <br>
+
 DeviceLogonEvents
 | where DeviceName contains "windows-target"
 | where ActionType == "LogonFailed"
@@ -24,7 +25,7 @@ DeviceLogonEvents
 
 I altered the search to limit the time scope to 7 days and to provide the number of failed logon attempts and a list of the different AccountNames the real bad actor tried to login as
 
-Query used: 
+***Query used:*** <br>
 DeviceLogonEvents
 | where Timestamp > ago(7d)
 | where DeviceName contains "windows-target"
@@ -43,7 +44,7 @@ DeviceLogonEvents
 
 We used the ***join*** to join two datasets... It's like the middle part of a Venn Diagram and will only include info found in both datasets... In this case there were no successful logon attempts after failed ones so there were no results.
 
-Query used: 
+***Query used:*** <br>
 let Failed =
 DeviceLogonEvents
 | where Timestamp > ago(7d)
