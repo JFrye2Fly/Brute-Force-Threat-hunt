@@ -25,6 +25,7 @@
 I altered the search to limit the time scope to 7 days and to provide the number of failed logon attempts and a list of the different AccountNames the real bad actor tried to login as
 
 ***Query used:*** <br>
+
 *DeviceLogonEvents
 | where Timestamp > ago(7d)
 | where DeviceName contains "windows-target"
