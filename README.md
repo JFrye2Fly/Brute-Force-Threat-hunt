@@ -9,11 +9,11 @@
 
 ***Query used:*** <br>
 
-DeviceLogonEvents
+*DeviceLogonEvents
 | where DeviceName contains "windows-target"
 | where ActionType == "LogonFailed"
 | summarize FailedAttempts= count() by RemoteIP
-| order by FailedAttempts desc
+| order by FailedAttempts desc*
 
 <br>
 <img width="1325" height="897" alt="So many Brute force attempts" src="https://github.com/user-attachments/assets/ce10e3ed-25a9-453e-90f9-6c90ae65adef" />
@@ -25,7 +25,7 @@ DeviceLogonEvents
 I altered the search to limit the time scope to 7 days and to provide the number of failed logon attempts and a list of the different AccountNames the real bad actor tried to login as
 
 ***Query used:*** <br>
-DeviceLogonEvents
+*DeviceLogonEvents
 | where Timestamp > ago(7d)
 | where DeviceName contains "windows-target"
 | where ActionType == "LogonFailed"
@@ -33,7 +33,7 @@ DeviceLogonEvents
             TargetedAccounts=dcount(AccountName),
             Accounts=make_set(AccountName)
             by RemoteIP
-| order by FailedAttempts desc
+| order by FailedAttempts desc*
 <br>
 <img width="1406" height="921" alt="Bruite Force attempts in last 7 days by Account Name and number of attempts" src="https://github.com/user-attachments/assets/e6898db8-cf4c-4ae0-8757-be28c37cc541" />
 <br>
@@ -44,7 +44,7 @@ DeviceLogonEvents
 We used the ***join*** to join two datasets... It's like the middle part of a Venn Diagram and will only include info found in both datasets... In this case there were no successful logon attempts after failed ones so there were no results.
 
 ***Query used:*** <br>
-let Failed =
+*let Failed =
 DeviceLogonEvents
 | where Timestamp > ago(7d)
 | where DeviceName contains "windows-target"
@@ -58,7 +58,7 @@ DeviceLogonEvents
 Failed
 | join kind=inner Success on RemoteIP, AccountName
 | project RemoteIP, AccountName, FailedAttempts
-| order by FailedAttempts desc
+| order by FailedAttempts desc*
 
 <br>
 <img width="1201" height="880" alt="No successful logon to the Windows VM after Brute Force attempt" src="https://github.com/user-attachments/assets/bd1b76cc-7213-4391-b9de-a3c01ba3b743" />
