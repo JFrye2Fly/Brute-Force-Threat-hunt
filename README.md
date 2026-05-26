@@ -3,7 +3,6 @@
 ## Introduction
 
 ### During routine maintenance, the security team is tasked with investigating any VMs in the shared services cluster (handling DNS, Domain Services, DHCP, etc.) that have mistakenly been exposed to the public internet. The goal is to identify any misconfigured VMs and check for potential brute-force login attempts/successes from external sources.
-l rules.
 
 <br><hr><br>
 ## Step 1 — Search for failed logins
