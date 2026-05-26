@@ -45,6 +45,7 @@ I altered the search to limit the time scope to 7 days and to provide the number
 We used the ***join*** to join two datasets... It's like the middle part of a Venn Diagram and will only include info found in both datasets... In this case there were no successful logon attempts after failed ones so there were no results.
 
 ***Query used:*** <br>
+
 *let Failed =
 DeviceLogonEvents
 | where Timestamp > ago(7d)
